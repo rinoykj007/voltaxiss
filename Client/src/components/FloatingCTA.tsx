@@ -9,9 +9,9 @@ interface FloatingCTAProps {
 }
 
 const FloatingCTA = ({
-  phone = "+966591351561",
+  phone = "+966536438786",
   email = "info@voltaxis.com",
-  whatsapp = "+966591351561",
+  whatsapp = "+966536438786",
 }: FloatingCTAProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
