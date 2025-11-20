@@ -12,10 +12,10 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
                 <Zap className="w-6 h-6 text-primary-foreground" />
               </div>
-              <span className="text-2xl font-bold">Volt Axis</span>
+              <span className="text-2xl font-bold">Volt Axis Trading Company</span>
             </div>
             <p className="text-sm text-background/80 mb-6 leading-relaxed max-w-md">
-              Volt Axis stands as more than a supplier - we are your long-term
+              Volt Axis Trading Company stands as more than a supplier - we are your long-term
               partner in building stronger foundations, shaping the future of
               industrial and construction excellence in the Kingdom of Saudi
               Arabia.
@@ -217,7 +217,7 @@ const Footer = () => {
               <li className="pt-2">
                 <WhatsAppButton
                   phone="+966536438786"
-                  message="Hello Volt Axis, I'm interested in your products and services."
+                  message="Hello Volt Axis Trading Company, I'm interested in your products and services."
                   label="Chat with Us"
                   className="w-full justify-center"
                 />
@@ -229,7 +229,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-background/20 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/70">
-            <p>© 2024 Volt Axis Trading Est. All Rights Reserved</p>
+            <p>© 2024 Volt Axis Trading Company. All Rights Reserved</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-primary transition-colors">
                 Privacy Policy

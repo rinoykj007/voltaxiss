@@ -2,10 +2,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import AdminLayout from "@/components/AdminLayout";
+import FloatingCTA from "@/components/FloatingCTA";
 import Index from "./pages/Index";
 import AboutPage from "./pages/About";
 import Services from "./pages/Services";
@@ -18,6 +19,19 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Component to conditionally render FloatingCTA
+const FloatingCTAWrapper = () => {
+  const location = useLocation();
+  // Don't show FloatingCTA on admin pages and login page
+  const hideOnRoutes = ["/admin", "/login"];
+  const shouldHide = hideOnRoutes.some((route) =>
+    location.pathname.startsWith(route)
+  );
+
+  if (shouldHide) return null;
+  return <FloatingCTA />;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
@@ -25,6 +39,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <FloatingCTAWrapper />
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Index />} />

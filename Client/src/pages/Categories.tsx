@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,43 +26,50 @@ const CATEGORY_CONFIG: CategoryData[] = [
   {
     name: "Electrical Components",
     icon: Zap,
-    description: "Comprehensive electrical solutions including wiring, switches, circuit breakers, and lighting components for industrial and commercial applications.",
+    description:
+      "Comprehensive electrical solutions including wiring, switches, circuit breakers, and lighting components for industrial and commercial applications.",
     gradient: "from-yellow-500/20 via-amber-500/20 to-orange-500/20",
   },
   {
     name: "Tools & Equipment",
     icon: Wrench,
-    description: "Professional-grade tools and equipment for construction, maintenance, and industrial operations.",
+    description:
+      "Professional-grade tools and equipment for construction, maintenance, and industrial operations.",
     gradient: "from-blue-500/20 via-cyan-500/20 to-teal-500/20",
   },
   {
     name: "Industrial Supplies",
     icon: Package,
-    description: "Essential industrial supplies including tapes, adhesives, lubricants, and cleaning solutions for manufacturing and maintenance.",
+    description:
+      "Essential industrial supplies including tapes, adhesives, lubricants, and cleaning solutions for manufacturing and maintenance.",
     gradient: "from-purple-500/20 via-pink-500/20 to-rose-500/20",
   },
   {
     name: "Construction Materials",
     icon: Construction,
-    description: "High-quality construction materials including pipes, fittings, and building consumables for all types of projects.",
+    description:
+      "High-quality construction materials including pipes, fittings, and building consumables for all types of projects.",
     gradient: "from-orange-500/20 via-red-500/20 to-pink-500/20",
   },
   {
     name: "Safety Equipment",
     icon: Shield,
-    description: "Complete range of safety solutions including fire protection tools and workplace safety supplies.",
+    description:
+      "Complete range of safety solutions including fire protection tools and workplace safety supplies.",
     gradient: "from-green-500/20 via-emerald-500/20 to-teal-500/20",
   },
   {
     name: "PPE",
     icon: HardHat,
-    description: "Personal Protective Equipment including helmets, gloves, safety shoes, and protective clothing for worker safety.",
+    description:
+      "Personal Protective Equipment including helmets, gloves, safety shoes, and protective clothing for worker safety.",
     gradient: "from-indigo-500/20 via-purple-500/20 to-pink-500/20",
   },
   {
     name: "Other",
     icon: Package,
-    description: "Additional products and specialized supplies to meet your unique industrial and construction needs.",
+    description:
+      "Additional products and specialized supplies to meet your unique industrial and construction needs.",
     gradient: "from-gray-500/20 via-slate-500/20 to-zinc-500/20",
   },
 ];
@@ -78,12 +84,8 @@ const Categories = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-primary/5">
       <Header />
-
-      {/* Spacer for header */}
-      <div className="pt-28"></div>
-
       {/* Hero Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-primary/10 via-accent/10 to-background">
+      <section className="py-16 px-4 bg-gradient-to-br from-primary/10 via-accent/10 to-background pt-32">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Browse Our Product Categories
@@ -136,12 +138,6 @@ const Categories = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <CTASection
-        title="Can't Find What You're Looking For?"
-        description="Contact us directly and our team will help you find the right products for your specific needs."
-      />
 
       <Footer />
     </div>

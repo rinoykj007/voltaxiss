@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
 import {
   Card,
   CardContent,
@@ -66,7 +65,7 @@ const Services = () => {
   // Generate WhatsApp inquiry message with product details
   const generateProductInquiry = (product: Product): string => {
     const details = [
-      `Hello Volt Axis,`,
+      `Hello Volt Axis Trading Company,`,
       ``,
       `I'm interested in the following product:`,
       ``,
@@ -339,9 +338,6 @@ const Services = () => {
           })}
         </div>
       </section>
-
-      {/* CTA Section */}
-      <CTASection />
 
       <Footer />
     </div>
