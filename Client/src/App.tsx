@@ -9,6 +9,7 @@ import AdminLayout from "@/components/AdminLayout";
 import Index from "./pages/Index";
 import AboutPage from "./pages/About";
 import Services from "./pages/Services";
+import Categories from "./pages/Categories";
 import Login from "./pages/Login";
 import Dashboard from "./pages/admin/Dashboard";
 import Products from "./pages/admin/Products";
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/categories" element={<Categories />} />
             <Route path="/login" element={<Login />} />
 
             {/* Admin Routes */}
