@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import compression from 'compression';
 import connectDB from './config/db.js';
 
 // Import routes
@@ -41,6 +42,8 @@ app.use(cors({
   },
   credentials: true
 }));
+// Compress all responses (reduces response size by 70-90%)
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));

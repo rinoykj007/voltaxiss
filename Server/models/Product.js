@@ -69,8 +69,12 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-// Index for search
-productSchema.index({ name: 'text', description: 'text' });
+// Indexes for faster queries
+productSchema.index({ name: 'text', description: 'text' }); // Text search
+productSchema.index({ category: 1, featured: -1 }); // Category filtering with featured first
+productSchema.index({ inStock: 1, createdAt: -1 }); // Stock status with newest first
+productSchema.index({ featured: -1, createdAt: -1 }); // Featured products
+productSchema.index({ price: 1 }); // Price sorting
 
 const Product = mongoose.model('Product', productSchema);
 
