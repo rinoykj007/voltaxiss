@@ -1,10 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import santorini from "@/assets/customer.png";
 import femaleTraveler from "@/assets/female-traveler.jpg";
 import coupleTravelers from "@/assets/couple-travelers.jpg";
 
 const TestimonialSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="px-6 md:px-12 py-20 bg-secondary">
       <div className="max-w-7xl mx-auto">
@@ -64,10 +66,7 @@ const TestimonialSection = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      console.log("Read More clicked - Santorini, Greece");
-                      alert("Navigating to Santorini destination page...");
-                      // You can add navigation logic here, for example:
-                      // navigate('/destinations/santorini');
+                      navigate('/services');
                     }}
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold text-white border border-white/30 hover:border-white/50 transition-all duration-300 hover:gap-3 hover:px-6 shadow-lg hover:shadow-xl active:scale-95"
                   >
@@ -130,7 +129,10 @@ const TestimonialSection = () => {
                   />
                 </div>
 
-                <p className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors cursor-pointer">
+                <p
+                  onClick={() => navigate('/about')}
+                  className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors cursor-pointer"
+                >
                   Read More →
                 </p>
               </div>

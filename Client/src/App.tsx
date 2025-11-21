@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import AdminLayout from "@/components/AdminLayout";
@@ -11,6 +12,7 @@ import Index from "./pages/Index";
 import AboutPage from "./pages/About";
 import Services from "./pages/Services";
 import Categories from "./pages/Categories";
+import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Dashboard from "./pages/admin/Dashboard";
 import Products from "./pages/admin/Products";
@@ -18,6 +20,17 @@ import Messages from "./pages/admin/Messages";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+// Component to scroll to top on route change
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+};
 
 // Component to conditionally render FloatingCTA
 const FloatingCTAWrapper = () => {
@@ -39,6 +52,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <FloatingCTAWrapper />
           <Routes>
             {/* Public Routes */}
@@ -46,6 +60,7 @@ const App = () => (
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<Services />} />
             <Route path="/categories" element={<Categories />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
 
             {/* Admin Routes */}

@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import femaleTraveler from "@/assets/Building.png";
 import coupleTravelers from "@/assets/Building-02.png";
 
 const AboutSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="px-6 md:px-12 py-16 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -117,7 +119,12 @@ const AboutSection = () => {
               safety and efficiency every step of the way.
             </p>
 
-            <Button variant="default" size="lg" className="rounded-full">
+            <Button
+              variant="default"
+              size="lg"
+              className="rounded-full"
+              onClick={() => navigate('/services')}
+            >
               View Services
             </Button>
           </div>

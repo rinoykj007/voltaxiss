@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import {
   Carousel,
   CarouselContent,
@@ -25,6 +26,7 @@ const carouselSlides = [
     category: "OUR SERVICES",
     title: "Building Stronger Foundations for the Kingdom's Growth",
     buttonText: "Explore Services",
+    buttonLink: "/services",
     image: techServices,
   },
   {
@@ -32,6 +34,7 @@ const carouselSlides = [
     category: "IT CONSULTING",
     title: "Strategic IT Consulting to Drive Your Business Forward",
     buttonText: "Get Started",
+    buttonLink: "/contact",
     image: consulting,
   },
   {
@@ -39,6 +42,7 @@ const carouselSlides = [
     category: "COMPLETE PROJECT SOLUTIONS",
     title: "Reliable Support and Supplies to Ensure Project Success",
     buttonText: "Learn More",
+    buttonLink: "/services",
     image: businessTeam,
   },
   {
@@ -46,6 +50,7 @@ const carouselSlides = [
     category: "INDUSTRIAL CONTROL & AUTOMATION",
     title: "Advanced Control Solutions to Optimize Your Operations",
     buttonText: "Our Story",
+    buttonLink: "/about",
     image: corporateOffice,
   },
 ];
@@ -64,6 +69,7 @@ const navigationTabs = [
 const HeroSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!api) return;
@@ -76,7 +82,7 @@ const HeroSection = () => {
   }, [api]);
 
   return (
-    <section className="relative w-full overflow-hidden ">
+    <section className="relative w-full overflow-hidden">
       <Carousel
         opts={{
           align: "start",
@@ -94,7 +100,7 @@ const HeroSection = () => {
         <CarouselContent>
           {carouselSlides.map((slide, index) => (
             <CarouselItem key={slide.id}>
-              <div className="relative w-full h-[600px] md:h-[700px]">
+              <div className="relative w-full h-screen">
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 bg-cover bg-center"
@@ -120,6 +126,7 @@ const HeroSection = () => {
                       <Button
                         variant="outline"
                         size="lg"
+                        onClick={() => navigate(slide.buttonLink)}
                         className="rounded-full border-2 border-white/30 bg-transparent hover:bg-white/10 text-white px-8 py-6 flex items-center gap-3 group mt-8 animate-slide-up opacity-0 [animation-delay:600ms] [animation-fill-mode:forwards]"
                       >
                         <span className="text-base">{slide.buttonText}</span>

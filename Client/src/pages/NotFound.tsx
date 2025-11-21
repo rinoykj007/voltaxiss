@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import WhatsAppButton from "../components/WhatsAppButton";
+import { CONTACT_INFO } from "@/constants/contact";
 
 const NotFound = () => {
   const location = useLocation();
@@ -18,13 +19,20 @@ const NotFound = () => {
           <a href="/" className="text-blue-500 underline hover:text-blue-700">
             Return to Home
           </a>
-          <div className="pt-4">
+          <div className="pt-4 space-y-3">
             <p className="mb-2 text-sm text-gray-500">Need help? Contact us on WhatsApp</p>
-            <WhatsAppButton
-              phone="00966591351561"
-              message="Hello, I need help navigating your website."
-              label="Contact Support"
-            />
+            <div className="flex flex-col gap-2">
+              <WhatsAppButton
+                phone={CONTACT_INFO.whatsapp.showroom.formatted}
+                message={CONTACT_INFO.messages.support}
+                label="Contact Showroom"
+              />
+              <WhatsAppButton
+                phone={CONTACT_INFO.whatsapp.trading.formatted}
+                message={CONTACT_INFO.messages.support}
+                label="Contact Trading"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import { Zap, MapPin, Phone, Globe, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 import WhatsAppButton from "./WhatsAppButton";
+import { CONTACT_INFO } from "@/constants/contact";
 
 const Footer = () => {
   return (
@@ -81,52 +83,52 @@ const Footer = () => {
             <h3 className="font-bold mb-4 text-base">Quick Links</h3>
             <ul className="space-y-2.5 text-sm text-background/80">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Safety Solutions
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Furniture Solutions
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Welding & Fastening
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Tools & Equipment
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Office & Pantry Supplies
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Manpower Supply
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -136,44 +138,44 @@ const Footer = () => {
             <h3 className="font-bold mb-4 text-base">Company</h3>
             <ul className="space-y-2.5 text-sm text-background/80">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Who We Are
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Our Vision
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Our Mission
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/services"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Products & Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/contact"
                   className="hover:text-primary hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -192,14 +194,22 @@ const Footer = () => {
                   Saudi Arabia
                 </span>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <a
-                  href="tel:+966591351561"
-                  className="hover:text-primary transition-colors"
-                >
-                  +966 59 135 1561
-                </a>
+              <li className="flex items-start gap-2">
+                <Phone className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-1">
+                  <a
+                    href={`tel:${CONTACT_INFO.whatsapp.showroom.number}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {CONTACT_INFO.whatsapp.showroom.number} (Showroom)
+                  </a>
+                  <a
+                    href={`tel:${CONTACT_INFO.whatsapp.trading.number}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {CONTACT_INFO.whatsapp.trading.number} (Trading)
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-2">
                 <Globe className="w-4 h-4 text-primary flex-shrink-0" />
@@ -214,11 +224,17 @@ const Footer = () => {
                 <Clock className="w-4 h-4 text-primary flex-shrink-0" />
                 <span>SAT-THU 9 AM - 5 PM</span>
               </li>
-              <li className="pt-2">
+              <li className="pt-2 space-y-2">
                 <WhatsAppButton
-                  phone="+966536438786"
-                  message="Hello Volt Axis Trading Company, I'm interested in your products and services."
-                  label="Chat with Us"
+                  phone={CONTACT_INFO.whatsapp.showroom.formatted}
+                  message={CONTACT_INFO.messages.general}
+                  label="WhatsApp - Showroom"
+                  className="w-full justify-center"
+                />
+                <WhatsAppButton
+                  phone={CONTACT_INFO.whatsapp.trading.formatted}
+                  message={CONTACT_INFO.messages.general}
+                  label="WhatsApp - Trading"
                   className="w-full justify-center"
                 />
               </li>

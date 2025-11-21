@@ -19,9 +19,9 @@ import {
   Zap,
   Construction,
   Loader2,
-  SlidersHorizontal,
 } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { CONTACT_INFO } from "@/constants/contact";
 
 interface Product {
   _id: string;
@@ -272,32 +272,6 @@ const Services = () => {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-4 flex-grow flex flex-col">
-                        {/* Price & Unit
-                        <div className="flex items-baseline gap-2 pb-3 border-b border-border/50 flex-shrink-0">
-                          <span className="text-2xl font-bold text-primary">
-                            {product.price}
-                          </span>
-                          <span className="text-sm text-muted-foreground">
-                            SAR / {product.unit}
-                          </span>
-                        </div>
-
-                        {/* Stock Status */}
-                        {/* <div className="flex items-center gap-2">
-                          <div
-                            className={`w-2 h-2 rounded-full ${
-                              product.inStock ? "bg-green-500" : "bg-red-500"
-                            } animate-pulse`}
-                          />
-                          <span className="text-sm text-muted-foreground font-medium">
-                            {product.inStock ? (
-                              <>In Stock ({product.stock})</>
-                            ) : (
-                              "Out of Stock"
-                            )}
-                          </span>
-                        </div>  */}
-
                         {/* Manufacturer */}
                         {product.manufacturer && (
                           <p className="text-xs text-muted-foreground italic">
@@ -323,7 +297,7 @@ const Services = () => {
                         {/* WhatsApp Inquiry Button */}
                         <div className="pt-4 border-t border-border/30 mt-auto">
                           <WhatsAppButton
-                            phone="+966536438786"
+                            phone={CONTACT_INFO.whatsapp.showroom.number}
                             message={generateProductInquiry(product)}
                             label="Inquire on WhatsApp"
                             className="w-full justify-center text-sm"
