@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import voltaxisLogo from "@/assets/voltaxis.png";
 import buildingImage from "@/assets/Building.png";
 import customerImage from "@/assets/customer.png";
@@ -56,14 +57,16 @@ const values = [
 ];
 
 const About = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-background">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-primary to-primary/80 text-primary-foreground px-6 md:px-12 py-20 pt-32">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative bg-gradient-to-br from-primary to-primary/80 text-primary-foreground h-screen flex items-center px-6 md:px-12">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left Content */}
-            <div className="space-y-6 animate-fade-in-up">
+            <div className="space-y-4 animate-fade-in-up">
               <p className="text-sm font-semibold text-accent uppercase tracking-wider">
                 About Volt Axis Trading Est
               </p>
@@ -86,6 +89,7 @@ const About = () => {
                   variant="default"
                   size="lg"
                   className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90"
+                  onClick={() => navigate('/services')}
                 >
                   Our Services
                 </Button>
@@ -93,6 +97,7 @@ const About = () => {
                   variant="outline"
                   size="lg"
                   className="rounded-full border-2 border-primary-foreground/30 bg-transparent hover:bg-white/10 text-primary-foreground"
+                  onClick={() => navigate('/contact')}
                 >
                   Contact Us
                 </Button>
@@ -105,7 +110,7 @@ const About = () => {
                 <img
                   src={buildingImage}
                   alt="Volt Axis Building"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[400px] md:h-[450px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-8 left-8 right-8">
@@ -313,6 +318,7 @@ const About = () => {
                 variant="default"
                 size="lg"
                 className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                onClick={() => navigate('/contact')}
               >
                 Join Our Team
               </Button>
@@ -336,6 +342,7 @@ const About = () => {
               variant="default"
               size="lg"
               className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90"
+              onClick={() => navigate('/contact')}
             >
               Request a Quote
             </Button>
@@ -343,6 +350,7 @@ const About = () => {
               variant="outline"
               size="lg"
               className="rounded-full border-2 border-primary-foreground/30 bg-transparent hover:bg-white/10 text-primary-foreground"
+              onClick={() => navigate('/services')}
             >
               View Our Catalog
             </Button>

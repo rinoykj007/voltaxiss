@@ -54,6 +54,11 @@ const productSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
+    provider: {
+      type: String,
+      default: 'by Volt Axis Company',
+      trim: true
+    },
     inStock: {
       type: Boolean,
       default: true

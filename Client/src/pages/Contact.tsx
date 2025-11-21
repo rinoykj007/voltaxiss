@@ -6,11 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { CONTACT_INFO } from "@/constants/contact";
+import { contactAPI } from "@/services/api";
 import {
   MapPin,
   Phone,
   Send,
   CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -35,29 +37,48 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        department: "showroom",
-        subject: "",
-        message: "",
+    try {
+      // Submit form data to backend API
+      await contactAPI.submit({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.department,
+        subject: formData.subject,
+        message: formData.message,
       });
-    }, 3000);
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          department: "showroom",
+          subject: "",
+          message: "",
+        });
+      }, 3000);
+    } catch (err: any) {
+      setIsSubmitting(false);
+      setError(err.response?.data?.message || "Failed to send message. Please try again.");
+
+      // Clear error after 5 seconds
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
+    }
   };
 
   const handleChange = (
@@ -105,6 +126,14 @@ const Contact = () => {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
+                      {/* Error Message */}
+                      {error && (
+                        <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+                          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                          <p className="text-sm text-red-600">{error}</p>
+                        </div>
+                      )}
+
                       {/* Name, Email & Phone in one row */}
                       <div className="grid md:grid-cols-3 gap-4">
                         <div>
